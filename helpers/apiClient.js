@@ -23,6 +23,16 @@ export const addNewProduct = async (request, objectData) => {
 };
 
 export const updateProductById = async (request, id, data) => {
-  const response = await request.put(`https://api.restful-api.dev/objects/${id}`, {data});
-  return response;  
-} 
+  const response = await request.put(`https://api.restful-api.dev/objects/${id}`, { data });
+  return response;
+};
+
+export const particallyUpdateProductById = async (request, id, data) => {
+  const response = await request.patch(`https://api.restful-api.dev/objects/${id}`, { data });
+  return response;
+};
+
+export const deleteProductById = async (request, id) => {
+  const response = await request.delete(`https://api.restful-api.dev/objects/${id}`);
+  return response;
+};
