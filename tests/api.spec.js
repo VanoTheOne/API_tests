@@ -41,13 +41,13 @@ test('Add new product', async ({ request }) => {
   };
   const response = await apiClient.addNewProduct(request, object);
   expect(response.status()).toBe(200);
-const product = await response.json();
-expect(product.name).toBe(`Apple MacBook Pro 16`);
-expect(product.data.year).toBe(2019);
-expect(product.data.price).toBe(1849.99);
-expect(product.data['CPU model']).toBe(`Intel Core i9`);
-expect(product.data['Hard disk size']).toBe(`1 TB`);
-expect(product.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}(Z|[\+\-]\d{2}:\d{2})$/);
+  const product = await response.json();
+  expect(product.name).toBe(`Apple MacBook Pro 16`);
+  expect(product.data.year).toBe(2019);
+  expect(product.data.price).toBe(1849.99);
+  expect(product.data['CPU model']).toBe(`Intel Core i9`);
+  expect(product.data['Hard disk size']).toBe(`1 TB`);
+  expect(product.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}(Z|[\+\-]\d{2}:\d{2})$/);
 });
 
 test('Update product by ID', async ({ request }) => {
@@ -73,8 +73,8 @@ test('Update product by ID', async ({ request }) => {
     data: {
       year: 2020,
       price: 2000.99,
-'CPU model': 'Intel Core i10',
-'Hard disk size': '2 TB',
+      'CPU model': 'Intel Core i10',
+      'Hard disk size': '2 TB',
       color: 'silver',
     },
   };

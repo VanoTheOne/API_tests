@@ -16,9 +16,7 @@ module.exports = defineConfig({
   // globalTeardown: './global/globalTeardown.js',
   testDir: '.',
   testMatch: [
-    '**/imdb/tests/**/*.spec.js',
-    '**/vigbo/tests/**/*.spec.js',
-    '**/api/tests/**/*.spec.js'
+    '**/api_js/tests/**/*.spec.js'
   ],
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -51,7 +49,6 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
       viewport: { width: 1680, height: 1050 },
-      storageState: './LoginAuth.json',
       }, 
     },
 
