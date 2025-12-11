@@ -1,6 +1,7 @@
 const { test, expect, request } = require('@playwright/test');
 const apiClient = require('../helpers/apiClient');
 
+//test 1: GET all products
 test('GET all products', async ({ request }) => {
   const response = await apiClient.getAllProducts(request);
   expect(response.status()).toBe(200);
@@ -8,6 +9,7 @@ test('GET all products', async ({ request }) => {
   expect(Array.isArray(products)).toBeTruthy();
 });
 
+//test 2: GET single product by ID
 test('GET single product by ID', async ({ request }) => {
   const id = 1;
   const response = await apiClient.getSingleProductById(request, id);
@@ -19,6 +21,7 @@ test('GET single product by ID', async ({ request }) => {
   expect(product).toHaveProperty('data');
 });
 
+// test 3: GET products by IDs
 test('GET products by IDs', async ({ request }) => {
   const id = [5, 7, 10];
   const response = await apiClient.getProductsByIds(request, id[0], id[1], id[2]);
@@ -29,6 +32,7 @@ test('GET products by IDs', async ({ request }) => {
   expect(actualIds).toEqual(id);
 });
 
+// test 4: Add new product
 test('Add new product', async ({ request }) => {
   const object = {
     name: 'Apple MacBook Pro 16',
@@ -50,6 +54,7 @@ test('Add new product', async ({ request }) => {
   expect(product.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}(Z|[\+\-]\d{2}:\d{2})$/);
 });
 
+// test 5: Update product by ID
 test('Update product by ID', async ({ request }) => {
   //create product
   const response = await request.post(`https://api.restful-api.dev/objects`, {
@@ -90,6 +95,7 @@ test('Update product by ID', async ({ request }) => {
   expect(product.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}(Z|[\+\-]\d{2}:\d{2})$/);
 });
 
+// test 6: Partically update product by ID
 test('Partically update product by ID', async ({ request }) => {
   //create product
   const response = await request.post(`https://api.restful-api.dev/objects`, {
@@ -122,6 +128,7 @@ test('Partically update product by ID', async ({ request }) => {
   expect(product.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}(Z|[\+\-]\d{2}:\d{2})$/);
 });
 
+// test 7: Delete product by ID
 test('Delete product by ID', async ({ request }) => {
   //create product
   const response = await request.post(`https://api.restful-api.dev/objects`, {
